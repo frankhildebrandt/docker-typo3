@@ -1,0 +1,10 @@
+typo3:
+    build: .
+    ports:
+    - 80:80
+    links:
+    - mysql
+mysql:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: typo3

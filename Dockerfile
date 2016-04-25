@@ -10,6 +10,9 @@ RUN curl -O curl -O http://heanet.dl.sourceforge.net/project/typo3/TYPO3%20Sourc
  && ln -s /usr/lib/typo3/typo3_src-8.0.1 /var/www/html/typo3_src \
  && ln -s typo3_src/index.php /var/www/html/index.php \
  && ln -s typo3_src/typo3 /var/www/html/typo3 \
- && chown www-data /var/www/html
+ && chown -R www-data /var/www \
+ && touch /var/www/html/FIRST_INSTALL
  
+ RUN echo "max_execution_time=240" >> /etc/php/7.0/fpm/php.ini \
+  && echo "max_input_vars=1500" >> /etc/php/7.0/fpm/php.ini
  VOLUME /var/www/html
